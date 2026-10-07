@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>四国争霸 - 联机版</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- ========== 大厅 ========== -->
+    <div id="lobby">
+      <h1>四国争霸 · 联机版</h1>
+      <div class="lobby-actions">
+        <button id="btn-create">创建房间</button>
+        <div class="join-row">
+          <input id="input-room" placeholder="房间号" maxlength="4">
+          <button id="btn-join">加入房间</button>
+        </div>
+      </div>
+      <div id="lobby-status">未连接</div>
+    </div>
+
+    <!-- ========== 游戏 ========== -->
+    <div id="game" style="display:none">
+      <header id="topbar">
+        <div class="info-item">
+          <span id="my-color" style="display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:middle;margin-right:4px;"></span>
+          我是 <span id="my-id">-</span>
+        </div>
+        <div class="info-item">回合 <span id="turn">-</span></div>
+        <div class="info-item">粮食 <span id="food">-</span></div>
+        <div class="info-item">阶段 <span id="phase">-</span></div>
+        <div class="info-item">倒计时 <span id="timer">-</span></div>
+      </header>
+
+      <main id="map-wrapper">
+        <div id="map"></div>
+        <div id="moving-layer"></div>
+        <!-- 新增：应选象限金色框 -->
+        <div id="quadrant-overlay"></div>
+      </main>
+
+      <footer id="bottombar">
+        <div id="cell-info">等待游戏开始...</div>
+
+        <div id="split-row" style="display:none">
+          <div class="split-header">派出兵力</div>
+          <div class="split-items">
+            <div class="split-item">
+              <span class="troop-label">步兵</span>
+              <button class="btn-step" data-type="infantry" data-delta="-1">−</button>
+              <input type="number" id="send-infantry" min="0" value="0">
+              <button class="btn-step" data-type="infantry" data-delta="1">+</button>
+              <span class="max-hint" id="max-infantry">/0</span>
+            </div>
+            <div class="split-item">
+              <span class="troop-label">骑兵</span>
+              <button class="btn-step" data-type="cavalry" data-delta="-1">−</button>
+              <input type="number" id="send-cavalry" min="0" value="0">
+              <button class="btn-step" data-type="cavalry" data-delta="1">+</button>
+              <span class="max-hint" id="max-cavalry">/0</span>
+            </div>
+            <div class="split-item">
+              <span class="troop-label">轻骑兵</span>
+              <button class="btn-step" data-type="lightCav" data-delta="-1">−</button>
+              <input type="number" id="send-lightCav" min="0" value="0">
+              <button class="btn-step" data-type="lightCav" data-delta="1">+</button>
+              <span class="max-hint" id="max-lightCav">/0</span>
+            </div>
+          </div>
+          <div class="split-footer">
+            <button class="btn-quick" id="btn-send-all">全选</button>
+            <button class="btn-quick" id="btn-send-half">一半</button>
+            <button class="btn-quick" id="btn-send-clear">清空</button>
+            <span class="split-summary">共派出 <b id="split-total">0</b> 战力</span>
+          </div>
+        </div>
+
+        <div id="actions"></div>
+      </footer>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
