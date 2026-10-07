@@ -6,7 +6,7 @@
  *   一眼看清该点哪里
  * ============================================================ */
 
-const WS_URL = 'ws://localhost:8080';
+const WS_URL = 'wss://server-ti8g.onrender.com';
 const MAP_SIZE = 10;
 const TROOP_POWER = { infantry: 1, cavalry: 1, lightCav: 1 };
 const TROOP_ORDER = ['infantry', 'cavalry', 'lightCav'];
